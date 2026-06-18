@@ -1,0 +1,79 @@
+@use "../../../app/styles/variables/variables" as *;
+@use "../../../app/styles/common/mixins" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.label {
+  @include form-label;
+  margin-bottom: 0;
+}
+
+.optional {
+  @include form-optional-tag;
+}
+
+.input {
+  @include form-input-base;
+
+  &--error {
+    @include form-input-error;
+  }
+}
+
+.textarea {
+  @include form-textarea;
+
+  &--error {
+    @include form-input-error;
+  }
+}
+
+.hint {
+  @include form-hint;
+  margin-top: 4px;
+}
+
+.errorBlock {
+  @include form-error-block;
+  margin-bottom: 14px;
+}
+
+.consent {
+  @include form-consent-row;
+}
+
+.consentBox {
+  @include form-consent-box;
+}
+
+.consentText {
+  @include form-consent-text;
+}
+
+.legalLink {
+  @include form-legal-link;
+}
+
+.submit {
+  @include form-submit;
+
+  &--disabled {
+    @include form-submit-disabled;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
+}

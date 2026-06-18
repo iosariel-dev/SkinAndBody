@@ -1,0 +1,2225 @@
+@use "../../app/styles/variables/variables" as *;
+@use "../../app/styles/common/mixins" as *;
+
+// ============================================
+// SERVICE PAGE — faithful transfer from HTML design
+// ============================================
+
+.page {
+	background: $bg-primary;
+	overflow-x: hidden;
+}
+
+// ============================================
+// HERO
+// ============================================
+
+.hero {
+	padding-top: 72px; // offset for fixed header
+	min-height: 100vh;
+	display: flex;
+	align-items: stretch;
+	position: relative;
+	overflow: hidden;
+
+	// Large decorative circle behind image
+	&::before {
+		content: "";
+		position: absolute;
+		top: -120px;
+		right: -120px;
+		width: 700px;
+		height: 700px;
+		border-radius: 50%;
+		background: radial-gradient(
+			circle,
+			rgba(247, 240, 237, 0.8) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		max-width: $content-width;
+		margin: 0 auto;
+		padding: 0 $content-padding;
+		gap: 64px;
+		align-items: center;
+		min-height: calc(100vh - 72px);
+		position: relative;
+		z-index: 1;
+
+		@include lg {
+			grid-template-columns: 1fr;
+			gap: 40px;
+			min-height: auto;
+			padding: 40px 20px 60px;
+		}
+	}
+
+	&__content {
+		padding: 60px 0;
+
+		@include lg {
+			padding: 0;
+		}
+	}
+
+	// Breadcrumb
+	&__breadcrumb {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: 32px;
+	}
+
+	&__breadcrumb-link {
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $text-secondary;
+		transition: color $transition;
+		text-decoration: none;
+
+		&:hover {
+			color: $accent;
+		}
+	}
+
+	&__breadcrumb-sep {
+		font-size: 10px;
+		color: $border-color;
+	}
+
+	&__breadcrumb-current {
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $accent;
+	}
+
+	// Eyebrow
+	&__eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 20px;
+
+		&::before {
+			content: "";
+			display: block;
+			width: 28px;
+			height: 1px;
+			background: $accent;
+		}
+	}
+
+	// Heading
+	&__heading {
+		font-family: $font-heading;
+		font-size: clamp(40px, 5vw, 68px);
+		line-height: 1.08;
+		font-weight: 700;
+		color: $text-primary;
+		margin-bottom: 16px;
+
+		em {
+			font-style: italic;
+			color: $accent;
+			display: block;
+		}
+
+		@include sm {
+			font-size: 36px;
+		}
+	}
+
+	&__subtitle {
+		font-family: $font-heading;
+		font-style: italic;
+		font-size: 19px;
+		color: $text-secondary;
+		margin-bottom: 40px;
+		line-height: 1.5;
+	}
+
+	// Meta stats row
+	&__meta {
+		display: flex;
+		margin-bottom: 44px;
+		flex-wrap: wrap;
+		gap: 20px 32px;
+
+		@include sm {
+			flex-direction: column;
+			gap: 16px;
+		}
+	}
+
+	&__meta-item {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		&--bordered {
+			padding-left: 32px;
+			border-left: 1px solid $border-color;
+
+			@include sm {
+				padding-left: 0;
+				border-left: none;
+				padding-top: 16px;
+				position: relative;
+
+				&::before {
+					content: "";
+					display: block;
+					width: 40px;
+					height: 1px;
+					background: $border-color;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+	}
+
+	&__meta-val {
+		font-family: $font-heading;
+		font-size: 22px;
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1;
+	}
+
+	&__meta-label {
+		font-size: 11px;
+		color: $text-secondary;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+
+	// Actions
+	&__actions {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+		flex-wrap: wrap;
+
+		@include sm {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	&__btn-primary {
+		display: inline-block;
+		padding: 15px 36px;
+		font-family: $font-body;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: $white;
+		background: $accent;
+		border-radius: $radius-round;
+		transition: background $transition, transform $transition;
+		cursor: pointer;
+		border: none;
+
+		&:hover {
+			background: $accent-hover;
+			transform: translateY(-1px);
+		}
+
+		@include sm {
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	&__btn-ghost {
+		display: inline-block;
+		padding: 14px 36px;
+		font-family: $font-body;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: $accent;
+		border: 1.5px solid $accent;
+		border-radius: $radius-round;
+		transition: all $transition;
+		cursor: pointer;
+		background: none;
+		text-decoration: none;
+
+		&:hover {
+			background: $accent;
+			color: $white;
+		}
+
+		@include sm {
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	// Visual column
+	&__visual {
+		position: relative;
+		height: calc(100vh - 120px);
+		max-height: 840px;
+		align-self: center;
+
+		@include lg {
+			height: 440px;
+			max-height: 440px;
+			align-self: stretch;
+		}
+	}
+
+	&__image-main {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: $radius-img;
+	}
+
+	// Floating card — bottom left
+	&__float-card {
+		position: absolute;
+		bottom: 36px;
+		left: -28px;
+		background: $white;
+		border-radius: $radius-lg;
+		padding: 18px 22px;
+		box-shadow: 0 8px 40px rgba(44, 40, 38, 0.13);
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		min-width: 200px;
+
+		@include lg {
+			left: 12px;
+			bottom: 12px;
+		}
+	}
+
+	&__float-icon {
+		width: 44px;
+		height: 44px;
+		background: $bg-card;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		flex-shrink: 0;
+	}
+
+	&__float-label {
+		font-size: 11px;
+		color: $text-secondary;
+		line-height: 1.3;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		font-weight: 500;
+	}
+
+	&__float-val {
+		font-family: $font-heading;
+		font-size: 16px;
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1;
+		margin-top: 3px;
+	}
+
+	// Stat badge — top right
+	&__stat-badge {
+		position: absolute;
+		top: 36px;
+		right: -20px;
+		background: $accent;
+		color: $white;
+		border-radius: $radius-lg;
+		padding: 18px 22px;
+		text-align: center;
+		box-shadow: 0 8px 24px rgba(184, 144, 138, 0.4);
+
+		@include lg {
+			right: 12px;
+			top: 12px;
+		}
+	}
+
+	&__stat-num {
+		font-family: $font-heading;
+		font-size: 30px;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	&__stat-lbl {
+		font-size: 11px;
+		opacity: 0.85;
+		margin-top: 5px;
+		line-height: 1.35;
+	}
+
+	// Decorative tag strip
+	&__tag-strip {
+		position: absolute;
+		top: 50%;
+		right: -48px;
+		transform: translateY(-50%) rotate(90deg);
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.28em;
+		text-transform: uppercase;
+		color: $accent;
+		white-space: nowrap;
+		opacity: 0.55;
+
+		@media (max-width: 1100px) {
+			display: none;
+		}
+	}
+}
+
+// ============================================
+// PROCEDURE DESCRIPTION
+// ============================================
+
+.procedure {
+	padding: 96px 0;
+	background: $bg-section;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 5fr 7fr;
+		gap: 80px;
+		align-items: start;
+
+		@include lg {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+	}
+
+	// Sticky aside
+	&__aside {
+		position: sticky;
+		top: 100px;
+
+		@include lg {
+			position: static;
+		}
+	}
+
+	&__aside-img {
+		width: 100%;
+		border-radius: $radius-img;
+		overflow: hidden;
+		min-height: 500px;
+		position: relative;
+
+		@include lg {
+			min-height: 360px;
+		}
+
+		@include sm {
+			min-height: 500px;
+		}
+	}
+
+	&__aside-img-el {
+		object-fit: cover;
+	}
+
+	&__aside-note {
+		margin-top: 24px;
+		padding: 20px 22px;
+		background: $white;
+		border-radius: $radius-lg;
+		border-left: 3px solid $accent;
+	}
+
+	&__aside-note-label {
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 8px;
+	}
+
+	&__aside-note-text {
+		font-size: 13px;
+		color: $text-secondary;
+		line-height: 1.65;
+	}
+
+	// Body — right column
+	&__body {
+		// wrapper — no styles needed; just a container
+	}
+
+	&__eyebrow {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		display: block;
+		margin-bottom: 16px;
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(28px, 3vw, 42px);
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+		margin-bottom: 32px;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+	}
+
+	&__text {
+		font-size: 16px;
+		color: $text-secondary;
+		line-height: 1.85;
+		margin-bottom: 48px;
+	}
+
+	// Process steps
+	&__steps {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__step {
+		display: flex;
+		gap: 24px;
+		align-items: flex-start;
+		padding: 24px 0;
+		border-bottom: 1px solid $border-color;
+		position: relative;
+
+		&:first-child {
+			border-top: 1px solid $border-color;
+		}
+	}
+
+	&__step-num {
+		font-family: $font-heading;
+		font-size: 11px;
+		font-style: italic;
+		color: $accent;
+		opacity: 0.6;
+		min-width: 28px;
+		margin-top: 3px;
+		letter-spacing: 0.04em;
+	}
+
+	&__step-text {
+		font-size: 15px;
+		color: $text-primary;
+		line-height: 1.6;
+
+		strong {
+			color: $text-primary;
+			font-weight: 600;
+		}
+	}
+}
+
+// ============================================
+// RESULTS
+// ============================================
+// PROCEDURES CARDS
+// ============================================
+
+.procedures {
+	padding: 96px 0;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__head {
+		margin-bottom: 56px;
+
+		@include md {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__eyebrow {
+		display: block;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 14px;
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(28px, 3.2vw, 44px);
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+	}
+
+	&__accordion {
+		border: 1px solid $border-color;
+		border-radius: $radius-lg;
+		overflow: hidden;
+	}
+
+	&__item {
+		border-bottom: 1px solid $border-color;
+		position: relative;
+		overflow: hidden;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-image: var(--item-bg);
+			background-size: cover;
+			background-position: var(--item-bg-pos, center);
+			clip-path: circle(0% at calc(100% - 42px) 40px);
+			transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+			z-index: 0;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: rgba(44, 40, 38, 0.62);
+			clip-path: circle(0% at calc(100% - 42px) 40px);
+			transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+			z-index: 1;
+		}
+
+		& > * {
+			position: relative;
+			z-index: 2;
+		}
+
+		&--open {
+			&::before {
+				clip-path: circle(150% at calc(100% - 42px) 40px);
+			}
+
+			&::after {
+				clip-path: circle(150% at calc(100% - 42px) 40px);
+			}
+
+			.procedures__btnTitle {
+				color: $white;
+			}
+
+			.procedures__chevron {
+				transform: rotate(180deg);
+				color: $white;
+			}
+
+			.procedures__btn {
+				background: transparent !important;
+			}
+
+			.procedures__body {
+				max-height: 600px;
+				transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+			}
+		}
+	}
+
+	&__btn {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 28px 32px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		text-align: left;
+		font-family: inherit;
+		position: relative;
+		z-index: 2;
+		@include sm {
+			padding: 18px 20px;
+		}
+	}
+
+	&__btnTitle {
+		font-family: $font-heading;
+		font-size: 22px;
+		font-weight: 700;
+		color: $text-primary;
+		flex: 1;
+		transition: color 0.3s ease;
+	}
+
+	&__chevron {
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+		color: $text-secondary;
+		transition: transform 0.3s ease, color 0.3s ease;
+	}
+
+	&__body {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	&__text {
+		width: 50%;
+		padding: 0 32px 28px;
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 1.7;
+		color: rgba(255, 255, 255, 0.9);
+
+		@include sm {
+			width: 100%;
+			padding: 0 20px 20px;
+		}
+	}
+}
+
+// ============================================
+
+.results {
+	padding: 96px 0;
+	background: $bg-primary;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__head {
+		margin-bottom: 60px;
+	}
+
+	&__eyebrow {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 14px;
+		display: block;
+	}
+
+	&__title {
+		font-size: clamp(30px, 3.5vw, 48px);
+		font-family: $font-heading;
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+
+		@include md {
+			font-size: 28px;
+		}
+	}
+
+	&__sub {
+		margin-top: 14px;
+		font-size: 16px;
+		color: $text-secondary;
+		line-height: 1.7;
+		max-width: 560px;
+	}
+
+	// Grid
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2px;
+		border-radius: $radius-lg;
+		overflow: hidden;
+		background: $border-color;
+
+		@include lg {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include md {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+// Result card (global-like within module)
+.result-card {
+	background: $white;
+	padding: 36px 32px;
+	transition: background $transition;
+	position: relative;
+	overflow: hidden;
+	cursor: default;
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 3px;
+		background: $accent;
+		transition: width 0.4s ease;
+	}
+
+	&:hover {
+		background: $bg-card;
+
+		&::before {
+			width: 100%;
+		}
+
+		.result-card__num {
+			color: $accent;
+			opacity: 0.4;
+		}
+	}
+
+	&__icon {
+		font-size: 24px;
+		margin-bottom: 14px;
+		display: block;
+		color: $accent;
+		opacity: 0.5;
+	}
+
+	&__num {
+		font-family: $font-heading;
+		font-size: 40px;
+		font-weight: 700;
+		color: $border-color;
+		line-height: 1;
+		margin-bottom: 16px;
+		transition: color $transition, opacity $transition;
+	}
+
+	&__text {
+		font-size: 15px;
+		color: $text-primary;
+		line-height: 1.65;
+
+		@include md {
+			font-size: 14px;
+		}
+	}
+}
+
+// ============================================
+// BEFORE / AFTER
+// ============================================
+
+.before-after {
+	padding: 96px 0;
+	background: $bg-section;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__head {
+		margin-bottom: 56px;
+
+		&--center {
+			text-align: center;
+
+			.before-after__sub {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+
+	&__eyebrow {
+		display: block;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 14px;
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(30px, 3.5vw, 48px);
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+
+		@include md {
+			font-size: 28px;
+		}
+	}
+
+	&__sub {
+		margin-top: 14px;
+		font-size: 16px;
+		color: $text-secondary;
+		line-height: 1.7;
+		max-width: 560px;
+	}
+
+	// Photo grid
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+
+		@media (max-width: 900px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (max-width: 560px) {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+// Gallery card
+.ba-card {
+	background: $white;
+	border-radius: $radius-lg;
+	box-shadow: 0 2px 16px rgba(44, 40, 38, 0.06);
+	overflow: hidden;
+	cursor: pointer;
+	transition: transform $transition, box-shadow $transition;
+	outline: none;
+
+	&:hover {
+		transform: translateY(-5px);
+		box-shadow: $shadow-lg;
+	}
+
+	&:focus-visible {
+		box-shadow: 0 0 0 3px rgba(184, 144, 138, 0.45);
+	}
+
+	&__img-wrap {
+		position: relative;
+		overflow: hidden;
+		aspect-ratio: 16 / 10;
+	}
+
+	&__img {
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+
+	&:hover &__img {
+		transform: scale(1.04);
+	}
+
+	&__zoom {
+		position: absolute;
+		inset: 0;
+		background: rgba(44, 40, 38, 0);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background $transition;
+	}
+
+	&:hover &__zoom {
+		background: rgba(44, 40, 38, 0.22);
+	}
+
+	&__zoom-icon {
+		width: 44px;
+		height: 44px;
+		background: $white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transform: scale(0.7);
+		transition: opacity $transition, transform $transition;
+
+		svg {
+			width: 18px;
+			height: 18px;
+			stroke: $accent;
+			fill: none;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+	}
+
+	&:hover &__zoom-icon {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	&__footer {
+		padding: 14px 18px 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__label {
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $text-secondary;
+	}
+
+	&__num {
+		font-family: $font-heading;
+		font-size: 13px;
+		font-style: italic;
+		color: $accent;
+		opacity: 0.8;
+	}
+}
+
+// Lightbox
+.ba-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 1000000; // выше yclients widget
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+
+	&__bg {
+		position: absolute;
+		inset: 0;
+		background: rgba(44, 40, 38, 0.82);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		cursor: pointer;
+	}
+
+	&__content {
+		position: relative;
+		z-index: 1;
+		max-width: 820px;
+		width: 100%;
+		animation: ba-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+	}
+
+	&__img-wrap {
+		width: 100%;
+		border-radius: $radius-modal;
+		overflow: hidden;
+		box-shadow: 0 24px 80px rgba(44, 40, 38, 0.4);
+	}
+
+	&__img {
+		width: 100%;
+		height: auto;
+		max-height: 85vh;
+		object-fit: contain;
+		display: block;
+		border-radius: $radius-modal;
+	}
+
+	&__close {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		width: 36px;
+		height: 36px;
+		border-radius: $radius-round;
+		background: $bg-section;
+		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: $text-secondary;
+		transition: background $transition, color $transition;
+		z-index: 2;
+
+		&:hover {
+			background: $accent;
+			color: $white;
+		}
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		margin-top: 20px;
+	}
+
+	&__nav-btn {
+		width: 44px;
+		height: 44px;
+		background: rgba(255, 255, 255, 0.15);
+		border-radius: 50%;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: background $transition, border-color $transition;
+		color: $white;
+
+		&:hover {
+			background: $accent;
+			border-color: $accent;
+		}
+
+		svg {
+			width: 16px;
+			height: 16px;
+			stroke: currentColor;
+			fill: none;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+	}
+
+	&__counter {
+		font-family: $font-heading;
+		font-size: 14px;
+		color: rgba(255, 255, 255, 0.75);
+		min-width: 48px;
+		text-align: center;
+	}
+}
+
+@keyframes ba-scale-in {
+	from {
+		opacity: 0;
+		transform: scale(0.92);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+// ============================================
+// EQUIPMENT
+// ============================================
+
+.equipment {
+	padding: 96px 0;
+	background: $bg-section;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 72px;
+		align-items: center;
+
+		@include lg {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+	}
+
+	// Visual
+	&__visual {
+		position: relative;
+
+		@include lg {
+			max-width: 480px;
+		}
+	}
+
+	&__img-wrap {
+		border-radius: $radius-img;
+		overflow: hidden;
+		aspect-ratio: 4 / 5;
+		position: relative;
+	}
+
+	&__img {
+		object-fit: cover;
+	}
+
+	// Certification badges floating
+	&__certs {
+		position: absolute;
+		bottom: -24px;
+		right: -24px;
+		display: flex;
+		gap: 8px;
+
+		@media (max-width: 1100px) {
+			right: 0;
+			bottom: -20px;
+		}
+
+		@include lg {
+			right: 0;
+			bottom: -16px;
+		}
+
+		@include sm {
+			position: static;
+			margin-top: 16px;
+			justify-content: flex-start;
+		}
+	}
+
+	&__cert {
+		background: $white;
+		border-radius: 12px;
+		padding: 12px 16px;
+		text-align: center;
+		box-shadow: 0 6px 24px rgba(44, 40, 38, 0.1);
+		min-width: 80px;
+	}
+
+	&__cert-icon {
+		font-size: 18px;
+		margin-bottom: 4px;
+	}
+
+	&__cert-label {
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: $text-secondary;
+	}
+
+	// Body
+	&__body {
+		// wrapper — no styles needed; just a container
+	}
+
+	&__eyebrow {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		display: block;
+		margin-bottom: 16px;
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(26px, 2.8vw, 40px);
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+		margin-bottom: 8px;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+	}
+
+	&__model {
+		font-family: $font-heading;
+		font-style: italic;
+		font-size: 17px;
+		color: $text-secondary;
+		margin-bottom: 40px;
+	}
+
+	// Specs list
+	&__specs {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__spec {
+		display: flex;
+		align-items: center;
+		gap: 18px;
+		padding: 18px 0;
+		border-bottom: 1px solid $border-color;
+
+		&:first-child {
+			border-top: 1px solid $border-color;
+		}
+	}
+
+	&__spec-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: $accent;
+		flex-shrink: 0;
+		opacity: 0.7;
+	}
+
+	&__spec-text {
+		font-size: 15px;
+		color: $text-primary;
+		line-height: 1.5;
+
+		strong {
+			color: $text-primary;
+			font-weight: 600;
+		}
+	}
+
+	&__docs-link {
+		@include link-underline($accent);
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin-top: 28px;
+		font-family: $font-body;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $accent;
+		text-decoration: none;
+		transition: color $transition;
+
+		&:hover {
+			color: $accent-hover;
+		}
+
+		svg {
+			transition: transform $transition;
+			flex-shrink: 0;
+		}
+
+		&:hover svg {
+			transform: translateX(4px);
+		}
+	}
+}
+
+// ============================================
+// CONSULTATION
+// ============================================
+
+.consultation {
+	padding: 96px 0;
+	background: $bg-section;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__head {
+		margin-bottom: 56px;
+
+		&--center {
+			text-align: center;
+
+			.consultation__sub {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+
+	&__eyebrow {
+		display: block;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 14px;
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(30px, 3.5vw, 48px);
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+	}
+
+	&__sub {
+		margin-top: 14px;
+		font-size: 16px;
+		color: $text-secondary;
+		line-height: 1.7;
+		max-width: 560px;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 24px;
+
+		@include md {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+// Consultation cards
+.consult-card {
+	background: $white;
+	border-radius: $radius-lg;
+	padding: 36px 32px 32px;
+	display: flex;
+	flex-direction: column;
+	border: 1.5px solid $border-color;
+	transition: border-color $transition, box-shadow $transition, transform $transition;
+	position: relative;
+	overflow: hidden;
+
+	// Top accent line on hover
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: $accent;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform $transition;
+	}
+
+	&:hover::before {
+		transform: scaleX(1);
+	}
+
+	&:hover {
+		border-color: $accent;
+		box-shadow: 0 12px 40px rgba(184, 144, 138, 0.15);
+		transform: translateY(-3px);
+	}
+
+	// Featured variant
+	&--featured {
+		background: $bg-card;
+	}
+
+	&__badge-placeholder {
+		height: 31px;
+		margin-bottom: 20px;
+	}
+
+	&__badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 5px 14px;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $white;
+		background: $accent;
+		border-radius: $radius-round;
+		margin-bottom: 20px;
+		align-self: flex-start;
+		box-shadow: 0 3px 12px rgba(184, 144, 138, 0.35);
+	}
+
+	&__icon {
+		width: 48px;
+		height: 48px;
+		background: $bg-section;
+		border-radius: $radius-md;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 20px;
+		color: $accent;
+
+		.consult-card--featured & {
+			background: rgba(255, 255, 255, 0.2);
+			color: $white;
+		}
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: 22px;
+		font-weight: 700;
+		color: $text-primary;
+		margin-bottom: 12px;
+		line-height: 1.3;
+	}
+
+	&__desc {
+		font-size: 15px;
+		color: $text-secondary;
+		line-height: 1.7;
+		flex: 1;
+		margin-bottom: 24px;
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-bottom: 28px;
+		flex-wrap: wrap;
+	}
+
+	&__price {
+		font-family: $font-heading;
+		font-size: 32px;
+		font-weight: 700;
+		color: $accent;
+		line-height: 1;
+	}
+
+	&__duration {
+		font-size: 13px;
+		color: $text-secondary;
+		padding: 5px 12px;
+		background: $bg-section;
+		border-radius: $radius-round;
+
+		.consult-card--featured & {
+			background: $white;
+		}
+	}
+
+	&__btn {
+		@include button-primary;
+		align-self: flex-start;
+
+		&--ghost {
+			@include button-outline;
+			align-self: flex-start;
+		}
+	}
+}
+
+// ============================================
+// CONSULTATION MODAL — success state only
+// (form fields & modal frame — used from shared/ui/Modal + shared/ui/Form)
+// ============================================
+
+.consult-success {
+	@include modal-success;
+
+	&__icon {
+		@include modal-success-icon;
+		font-weight: 700;
+	}
+
+	&__title {
+		@include modal-success-title;
+	}
+
+	&__text {
+		@include modal-success-text;
+	}
+}
+
+// ============================================
+// PRICES
+// ============================================
+
+.prices {
+	padding: 96px 0;
+	background: $bg-primary;
+
+	@include md {
+		padding: 64px 0;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	// Section head
+	&__head {
+		margin-bottom: 48px;
+	}
+
+	&__eyebrow {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		margin-bottom: 14px;
+		display: block;
+	}
+
+	&__title {
+		font-size: clamp(30px, 3.5vw, 48px);
+		font-family: $font-heading;
+		font-weight: 700;
+		color: $text-primary;
+		line-height: 1.2;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+
+		@include md {
+			font-size: 28px;
+		}
+	}
+
+	&__sub {
+		margin-top: 14px;
+		font-size: 16px;
+		color: $text-secondary;
+		line-height: 1.7;
+		max-width: 560px;
+	}
+
+	// Trial offer banner
+	&__trial {
+		background: linear-gradient(135deg, $accent 0%, $accent-hover 100%);
+		border-radius: $radius-lg;
+		padding: 28px 32px;
+		margin-bottom: 40px;
+		position: relative;
+		overflow: hidden;
+
+		@include sm {
+			padding: 24px 20px;
+		}
+	}
+
+	&__trial-badge {
+		display: inline-block;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $accent;
+		background: $white;
+		padding: 5px 14px;
+		border-radius: $radius-round;
+		margin-bottom: 20px;
+	}
+
+	&__trial-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+
+		@include sm {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	&__trial-info {
+		flex: 1;
+	}
+
+	&__trial-title {
+		font-family: $font-heading;
+		font-size: 22px;
+		font-weight: 700;
+		color: $white;
+		line-height: 1.2;
+		margin-bottom: 6px;
+
+		@include sm {
+			font-size: 18px;
+		}
+	}
+
+	&__trial-note {
+		font-size: 14px;
+		color: rgba(255, 255, 255, 0.75);
+		line-height: 1.5;
+	}
+
+	&__trial-right {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		flex-shrink: 0;
+
+		@include sm {
+			width: 100%;
+			justify-content: space-between;
+		}
+	}
+
+	&__trial-price {
+		font-family: $font-heading;
+		font-size: 32px;
+		font-weight: 700;
+		color: $white;
+		line-height: 1;
+		white-space: nowrap;
+
+		@include sm {
+			font-size: 26px;
+		}
+	}
+
+	&__trial-btn {
+		padding: 12px 28px;
+		font-family: $font-body;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: $accent;
+		background: $white;
+		border: none;
+		border-radius: $radius-round;
+		cursor: pointer;
+		white-space: nowrap;
+		transition: background $transition, transform $transition;
+
+		&:hover {
+			background: $bg-card;
+			transform: translateY(-1px);
+		}
+
+		@include sm {
+			width: auto;
+		}
+	}
+
+	// Tabs
+	&__tabs-wrap {
+		margin-bottom: 48px;
+	}
+
+	&__tabs {
+		display: inline-flex;
+		gap: 4px;
+		background: $bg-card;
+		border-radius: $radius-round;
+		padding: 4px;
+		flex-wrap: wrap;
+
+		@include sm {
+			display: flex;
+			flex-direction: column;
+			border-radius: $radius-lg;
+			width: 100%;
+		}
+	}
+
+	&__tab {
+		padding: 10px 28px;
+		font-family: $font-body;
+		font-size: 13px;
+		font-weight: 500;
+		color: $text-secondary;
+		border-radius: $radius-round;
+		cursor: pointer;
+		transition: all $transition;
+		background: none;
+		border: none;
+		white-space: nowrap;
+
+		&--active {
+			background: $white;
+			color: $text-primary;
+			box-shadow: 0 2px 10px rgba(44, 40, 38, 0.08);
+		}
+
+		@include sm {
+			border-radius: 10px;
+		}
+	}
+
+	// Panel
+	&__panel {
+		display: block;
+	}
+
+	// Disclaimer badge
+	&__disclaimer {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 10px 16px;
+		background: $bg-section;
+		border-radius: $radius-round;
+		font-size: 12px;
+		color: $text-secondary;
+		margin-bottom: 32px;
+	}
+
+	&__disclaimer-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: $accent;
+		flex-shrink: 0;
+	}
+
+	// Section label
+	&__section-label {
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: $accent;
+		margin: 32px 0 12px;
+		display: block;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
+	// Items list
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+}
+
+// Price item
+.price-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 20px 0;
+	border-bottom: 1px solid $border-color;
+	position: relative;
+	overflow: hidden;
+	transition: background $transition, padding-left $transition;
+	cursor: default;
+
+	&:first-child {
+		border-top: 1px solid $border-color;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: $accent;
+		transition: width 0.35s ease;
+	}
+
+	&:hover::after {
+		width: 100%;
+	}
+
+	&:hover {
+		background: linear-gradient(
+			90deg,
+			rgba(247, 240, 237, 0.55) 0%,
+			transparent 100%
+		);
+		padding-left: 12px;
+	}
+
+	// Complex variant
+	&--complex {
+		background: $bg-section;
+		border-radius: $radius-lg;
+		border: none !important;
+		padding: 24px;
+		margin-bottom: 8px;
+
+		&::after {
+			display: none;
+		}
+
+		&:hover {
+			background: $bg-card;
+		}
+
+		.price-item__badge {
+			background: $white;
+			box-shadow: 0 2px 8px rgba(184, 144, 138, 0.15);
+		}
+
+		.price-item__name {
+			font-weight: 500;
+		}
+	}
+
+	&__left {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		min-width: 0;
+	}
+
+	&__badge {
+		flex-shrink: 0;
+		width: 32px;
+		height: 32px;
+		background: $bg-card;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px;
+		font-family: $font-heading;
+		font-style: italic;
+		color: $accent;
+		font-weight: 700;
+	}
+
+	&__name {
+		font-size: 16px;
+		color: $text-primary;
+		line-height: 1.35;
+	}
+
+	&__zones {
+		font-size: 12px;
+		color: $text-secondary;
+		margin-top: 3px;
+		line-height: 1.4;
+	}
+
+	&__right {
+		text-align: right;
+		flex-shrink: 0;
+	}
+
+	&__price {
+		font-family: $font-heading;
+		font-size: 18px;
+		font-weight: 700;
+		color: $text-primary;
+		white-space: nowrap;
+	}
+
+	&__price-old {
+		font-size: 13px;
+		color: $text-secondary;
+		text-decoration: line-through;
+		display: block;
+		margin-top: 2px;
+		font-family: $font-body;
+	}
+}
+
+// ============================================
+// CTA BAND
+// ============================================
+
+.cta-band {
+	padding: 96px 0;
+	background: $text-primary;
+	position: relative;
+	overflow: hidden;
+
+	@include md {
+		padding: 72px 0;
+	}
+
+	// Decorative circles
+	&::before {
+		content: "";
+		position: absolute;
+		top: -200px;
+		right: -200px;
+		width: 600px;
+		height: 600px;
+		border-radius: 50%;
+		background: radial-gradient(
+			circle,
+			rgba(184, 144, 138, 0.12) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: -150px;
+		left: -150px;
+		width: 400px;
+		height: 400px;
+		border-radius: 50%;
+		background: radial-gradient(
+			circle,
+			rgba(184, 144, 138, 0.08) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
+
+	&__container {
+		@include container;
+	}
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 60px;
+		position: relative;
+		z-index: 1;
+
+		@include lg {
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+	}
+
+	&__eyebrow {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $accent;
+		display: block;
+		margin-bottom: 16px;
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(28px, 3.5vw, 48px);
+		font-weight: 700;
+		color: $white;
+		line-height: 1.2;
+		margin-bottom: 12px;
+
+		em {
+			font-style: italic;
+			color: $accent;
+		}
+	}
+
+	&__sub {
+		font-size: 15px;
+		color: rgba(255, 255, 255, 0.5);
+		line-height: 1.65;
+		max-width: 480px;
+	}
+
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		align-items: flex-end;
+		flex-shrink: 0;
+
+		@include lg {
+			align-items: flex-start;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__btn {
+		padding: 16px 40px;
+		font-family: $font-body;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: $text-primary;
+		background: $white;
+		border-radius: $radius-round;
+		transition: all $transition;
+		cursor: pointer;
+		border: none;
+		white-space: nowrap;
+
+		&:hover {
+			background: $accent;
+			color: $white;
+			transform: translateY(-1px);
+		}
+	}
+
+	&__phone {
+		font-size: 14px;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.45);
+		transition: color $transition;
+		text-align: right;
+		text-decoration: none;
+
+		&:hover {
+			color: $white;
+		}
+
+		@include lg {
+			text-align: left;
+		}
+	}
+}
+
+// ===== INSTALLMENTS INLINE =====
+
+.installments-inline {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 18px 24px;
+	margin-bottom: 32px;
+	background: rgba(184, 144, 138, 0.05);
+	border: 1px solid $border-color;
+	border-left: 3px solid $accent;
+	border-radius: $radius-md;
+	transition: background $transition, transform $transition;
+
+	&:hover {
+		background: $accent-light;
+		transform: translateX(2px);
+	}
+
+	@include sm {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+		padding: 16px 18px;
+	}
+}
+
+.installments-inline__icon {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: $bg-primary;
+	color: $accent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	flex-shrink: 0;
+	box-shadow: $shadow-sm;
+	font-style: normal;
+}
+
+.installments-inline__body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.installments-inline__title {
+	font-family: $font-body;
+	font-size: 15px;
+	font-weight: 600;
+	color: $text-primary;
+
+	em {
+		font-family: $font-heading;
+		font-style: italic;
+		font-weight: 400;
+		color: $accent;
+	}
+}
+
+.installments-inline__sub {
+	font-size: 13px;
+	color: $text-secondary;
+}
+
+.installments-inline__link {
+	color: $accent;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	transition: gap $transition;
+	flex-shrink: 0;
+}
+
+.installments-inline:hover .installments-inline__link {
+	gap: 10px;
+}

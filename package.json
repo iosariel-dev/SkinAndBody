@@ -1,0 +1,48 @@
+{
+  "name": "skinlab-refactor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "gen-catalog": "node scripts/gen-catalog.mjs",
+    "prebuild": "node scripts/gen-catalog.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "convert-webp": "node scripts/convert-webp.mjs",
+    "shrink-webp": "node scripts/shrink-webp.mjs",
+    "build-favicon": "node scripts/build-favicon.mjs"
+  },
+  "dependencies": {
+    "next": "16.2.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^22.19.21",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "jsdom": "^29.1.1",
+    "sass": "^1.101.0",
+    "sharp": "^0.35.1",
+    "typescript": "^5",
+    "vitest": "^4.1.9"
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss": ">=8.5.10",
+      "brace-expansion@1": "1.1.13",
+      "brace-expansion@2": "2.0.2",
+      "js-yaml": ">=4.2.0",
+      "@babel/core": ">=7.29.6"
+    }
+  }
+}

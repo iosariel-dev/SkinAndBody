@@ -1,0 +1,328 @@
+@use "@/app/styles/variables/variables" as *;
+
+.root {
+	position: fixed;
+	inset: 0;
+	z-index: 1000002;
+	visibility: hidden;
+	pointer-events: none;
+	// Скрываем visibility ПОСЛЕ анимации закрытия, иначе панель пропадает резко.
+	transition: visibility 0s linear 0.3s;
+}
+
+.root--open {
+	visibility: visible;
+	pointer-events: auto;
+	transition: visibility 0s;
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(44, 40, 38, 0.45);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	opacity: 0;
+	transition: opacity $transition;
+
+	.root--open & {
+		opacity: 1;
+	}
+}
+
+.panel {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	max-width: 440px;
+	display: flex;
+	flex-direction: column;
+	background: $bg-primary;
+	box-shadow: -8px 0 40px rgba(44, 40, 38, 0.16);
+	transform: translateX(100%);
+	transition: transform $transition;
+
+	.root--open & {
+		transform: translateX(0);
+	}
+}
+
+// ===== HEAD =====
+.head {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 28px;
+	border-bottom: 1px solid $border-color;
+}
+
+.head__title {
+	font-family: $font-heading;
+	font-size: 22px;
+	font-weight: 700;
+	color: $text-primary;
+}
+
+.head__close {
+	width: 36px;
+	height: 36px;
+	border-radius: $radius-round;
+	background: $bg-section;
+	border: none;
+	color: $text-secondary;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background $transition, color $transition;
+
+	&:hover {
+		background: $accent;
+		color: $white;
+	}
+}
+
+// ===== EMPTY =====
+.empty {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	padding: 40px;
+}
+
+.empty__text {
+	font-size: 16px;
+	color: $text-secondary;
+}
+
+.empty__link {
+	padding: 12px 28px;
+	font-size: 14px;
+	font-weight: 500;
+	color: $accent;
+	border: 1px solid $accent;
+	border-radius: $radius-round;
+	transition: background $transition, color $transition;
+
+	&:hover {
+		background: $accent;
+		color: $white;
+	}
+}
+
+// ===== LIST =====
+.list {
+	flex: 1;
+	overflow-y: auto;
+	padding: 12px 28px;
+}
+
+.line {
+	display: flex;
+	gap: 14px;
+	padding: 18px 0;
+	border-bottom: 1px solid $border-color;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.line__media {
+	position: relative;
+	flex-shrink: 0;
+	width: 72px;
+	height: 90px;
+	border-radius: $radius-sm;
+	overflow: hidden;
+	background: linear-gradient(150deg, #fbf4f1, #efe1db);
+}
+
+.line__img {
+	object-fit: cover;
+}
+
+.line__body {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.line__brand {
+	font-size: 10px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: $accent;
+	font-weight: 600;
+}
+
+.line__name {
+	font-family: $font-heading;
+	font-size: 15px;
+	font-weight: 700;
+	color: $text-primary;
+	margin: 3px 0 2px;
+	line-height: 1.3;
+
+	&:hover {
+		color: $accent;
+	}
+}
+
+.line__vol {
+	font-size: 12px;
+	color: $text-secondary;
+}
+
+.line__controls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.stepper {
+	display: flex;
+	align-items: center;
+	border: 1px solid $border-color;
+	border-radius: $radius-round;
+	overflow: hidden;
+}
+
+.stepper__btn {
+	width: 32px;
+	height: 32px;
+	border: none;
+	background: transparent;
+	font-size: 16px;
+	color: $text-secondary;
+	cursor: pointer;
+	transition: background $transition, color $transition;
+
+	&:hover {
+		background: $bg-card;
+		color: $accent;
+	}
+}
+
+.stepper__val {
+	width: 30px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 14px;
+	color: $text-primary;
+}
+
+.line__total {
+	font-size: 15px;
+	font-weight: 600;
+	color: $text-primary;
+	white-space: nowrap;
+}
+
+.line__remove {
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	border: none;
+	background: transparent;
+	color: $text-tertiary;
+	font-size: 12px;
+	cursor: pointer;
+	border-radius: $radius-round;
+	transition: background $transition, color $transition;
+
+	&:hover {
+		background: $bg-section;
+		color: $error;
+	}
+}
+
+// ===== FOOT =====
+.foot {
+	flex-shrink: 0;
+	padding: 22px 28px 28px;
+	border-top: 1px solid $border-color;
+}
+
+.foot__row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	font-size: 15px;
+	color: $text-secondary;
+	margin-bottom: 16px;
+}
+
+.foot__total {
+	font-family: $font-heading;
+	font-size: 24px;
+	font-weight: 700;
+	color: $text-primary;
+}
+
+.foot__checkout {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 52px;
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	color: $white;
+	background: $accent;
+	border-radius: $radius-round;
+	transition: background $transition;
+
+	&:hover {
+		background: $accent-hover;
+	}
+}
+
+.foot__share {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 48px;
+	margin-top: 10px;
+	font-family: $font-body;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: $text-primary;
+	background: $bg-card;
+	border: 1px solid $border-color;
+	border-radius: $radius-round;
+	cursor: pointer;
+	transition: background $transition, color $transition;
+
+	&:hover {
+		background: $border-color;
+	}
+
+	&--copied {
+		color: $white;
+		background: $success;
+		border-color: $success;
+	}
+}
+
+.foot__note {
+	margin-top: 12px;
+	font-size: 12px;
+	color: $text-tertiary;
+	text-align: center;
+}
+
+@media (max-width: $breakpoint-sm) {
+	.panel {
+		max-width: 100%;
+	}
+}

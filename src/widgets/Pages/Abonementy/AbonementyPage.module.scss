@@ -1,0 +1,523 @@
+@use "@/app/styles/variables/variables" as *;
+
+.page {
+	background: $bg-primary;
+}
+
+/* ===== HERO ===== */
+.hero {
+	padding: 96px 0 72px;
+	background: $bg-primary;
+}
+
+.hero__inner {
+	max-width: 880px;
+	margin: 0 auto;
+	padding: 0 $content-padding;
+}
+
+.hero__breadcrumb {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	color: $text-secondary;
+	margin-bottom: 24px;
+}
+
+.hero__breadcrumb-link {
+	color: $text-secondary;
+	transition: color $transition;
+
+	&:hover {
+		color: $accent;
+	}
+}
+
+.hero__breadcrumb-sep {
+	color: $text-tertiary;
+	font-size: 14px;
+}
+
+.hero__breadcrumb-current {
+	color: $text-primary;
+}
+
+.hero__eyebrow {
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: $accent;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.hero__heading {
+	font-family: $font-heading;
+	font-size: clamp(40px, 6vw, 64px);
+	line-height: 1.1;
+	font-weight: 400;
+	margin: 0 0 24px;
+	color: $text-primary;
+
+	em {
+		font-style: italic;
+		color: $accent;
+	}
+}
+
+.hero__lead {
+	font-size: 18px;
+	line-height: 1.6;
+	color: $text-secondary;
+	max-width: 720px;
+	margin: 0 0 36px;
+}
+
+.hero__actions {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.hero__btn-primary,
+.hero__btn-ghost {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px 32px;
+	border-radius: $radius-md;
+	font-family: $font-body;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	transition: background $transition, color $transition, border-color $transition;
+	cursor: pointer;
+}
+
+.hero__btn-primary {
+	background: $accent;
+	color: $text-inverse;
+	border: 1px solid $accent;
+
+	&:hover {
+		background: $accent-hover;
+		border-color: $accent-hover;
+	}
+}
+
+.hero__btn-ghost {
+	background: transparent;
+	color: $text-primary;
+	border: 1px solid $border-color;
+
+	&:hover {
+		border-color: $accent;
+		color: $accent;
+	}
+}
+
+/* ===== BENEFITS ===== */
+.benefits {
+	padding: 80px 0;
+	background: $bg-section;
+}
+
+.benefits__container {
+	max-width: $content-width;
+	margin: 0 auto;
+	padding: 0 $content-padding;
+}
+
+.benefits__head {
+	text-align: center;
+	max-width: 640px;
+	margin: 0 auto 56px;
+}
+
+.benefits__eyebrow {
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: $accent;
+	font-weight: 600;
+	margin-bottom: 14px;
+}
+
+.benefits__title {
+	font-family: $font-heading;
+	font-size: clamp(28px, 4vw, 40px);
+	line-height: 1.15;
+	font-weight: 400;
+	margin: 0 0 16px;
+
+	em {
+		font-style: italic;
+		color: $accent;
+	}
+}
+
+.benefits__sub {
+	font-size: 17px;
+	color: $text-secondary;
+	line-height: 1.55;
+	margin: 0;
+}
+
+.benefits__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@media (max-width: $breakpoint-md) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.benefit-card {
+	position: relative;
+	background: $bg-card-elevated;
+	border: 1px solid $border-color;
+	border-radius: $radius-lg;
+	padding: 36px 32px;
+	box-shadow: $shadow-sm;
+	transition: transform $transition, box-shadow $transition, border-color $transition;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: $shadow-md;
+		border-color: $accent-light;
+	}
+}
+
+.benefit-card__sparkle {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	color: $accent;
+	font-size: 18px;
+	font-style: normal;
+}
+
+.benefit-card__num {
+	font-family: $font-heading;
+	font-style: italic;
+	font-size: 18px;
+	color: $accent;
+	margin-bottom: 24px;
+	letter-spacing: 0.08em;
+}
+
+.benefit-card__title {
+	font-family: $font-heading;
+	font-size: 22px;
+	line-height: 1.25;
+	font-weight: 400;
+	margin: 0 0 12px;
+	color: $text-primary;
+}
+
+.benefit-card__text {
+	font-size: 15px;
+	color: $text-secondary;
+	line-height: 1.55;
+	margin: 0;
+}
+
+/* ===== SUBSCRIPTIONS LIST ===== */
+.subscriptions {
+	padding: 80px 0;
+	background: $bg-primary;
+}
+
+.subscriptions__container {
+	max-width: $content-width;
+	margin: 0 auto;
+	padding: 0 $content-padding;
+}
+
+.subscriptions__head {
+	text-align: center;
+	max-width: 640px;
+	margin: 0 auto 48px;
+}
+
+.subscriptions__eyebrow {
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: $accent;
+	font-weight: 600;
+	margin-bottom: 14px;
+}
+
+.subscriptions__title {
+	font-family: $font-heading;
+	font-size: clamp(28px, 4vw, 40px);
+	line-height: 1.15;
+	font-weight: 400;
+	margin: 0 0 16px;
+
+	em {
+		font-style: italic;
+		color: $accent;
+	}
+}
+
+.subscriptions__sub {
+	font-size: 17px;
+	color: $text-secondary;
+	line-height: 1.55;
+	margin: 0;
+}
+
+.subscriptions__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 18px;
+
+	@media (max-width: $breakpoint-md) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.subscription-card {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 24px 28px;
+	background: $bg-primary;
+	border: 1px solid $border-color;
+	border-radius: $radius-md;
+	transition: border-color $transition, transform $transition, box-shadow $transition;
+}
+
+.subscription-card:hover {
+	border-color: $accent;
+	transform: translateY(-2px);
+	box-shadow: $shadow-sm;
+}
+
+.subscription-card__head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.subscription-card__name {
+	font-family: $font-heading;
+	font-size: 20px;
+	font-weight: 400;
+	margin: 0;
+	color: $text-primary;
+}
+
+.subscription-card__discount {
+	font-family: $font-heading;
+	font-style: italic;
+	font-size: 18px;
+	color: $accent;
+	letter-spacing: 0.02em;
+	flex-shrink: 0;
+}
+
+.subscription-card__courses {
+	font-size: 14px;
+	color: $text-secondary;
+	letter-spacing: 0.02em;
+	padding-bottom: 14px;
+	border-bottom: 1px solid $border-light;
+}
+
+.subscription-card__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: $accent;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	transition: gap $transition;
+}
+
+.subscription-card:hover .subscription-card__link {
+	gap: 10px;
+}
+
+/* ===== INSTALLMENTS NOTICE ===== */
+.installments-notice {
+	padding: 0 0 80px;
+	background: $bg-primary;
+}
+
+.installments-notice__container {
+	max-width: $content-width;
+	margin: 0 auto;
+	padding: 0 $content-padding;
+}
+
+.installments-notice__card {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 22px 28px;
+	background: $accent-light;
+	border: 1px solid $border-color;
+	border-left: 3px solid $accent;
+	border-radius: $radius-md;
+	transition: background $transition, transform $transition;
+
+	&:hover {
+		background: rgba(184, 144, 138, 0.18);
+		transform: translateX(2px);
+	}
+
+	@media (max-width: $breakpoint-sm) {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+}
+
+.installments-notice__icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: $bg-primary;
+	color: $accent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	flex-shrink: 0;
+	box-shadow: $shadow-sm;
+}
+
+.installments-notice__body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.installments-notice__title {
+	font-family: $font-body;
+	font-size: 16px;
+	font-weight: 600;
+	color: $text-primary;
+
+	em {
+		font-family: $font-heading;
+		font-style: italic;
+		font-weight: 400;
+		color: $accent;
+	}
+}
+
+.installments-notice__sub {
+	font-size: 13px;
+	color: $text-secondary;
+}
+
+.installments-notice__link {
+	color: $accent;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	transition: gap $transition;
+	flex-shrink: 0;
+}
+
+.installments-notice__card:hover .installments-notice__link {
+	gap: 10px;
+}
+
+/* ===== CTA BAND ===== */
+.cta-band {
+	padding: 72px 0;
+	background: $bg-footer;
+	color: $text-inverse;
+}
+
+.cta-band__container {
+	max-width: $content-width;
+	margin: 0 auto;
+	padding: 0 $content-padding;
+}
+
+.cta-band__inner {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 40px;
+	align-items: center;
+
+	@media (max-width: $breakpoint-md) {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+}
+
+.cta-band__eyebrow {
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: $accent;
+	font-weight: 600;
+	margin-bottom: 14px;
+}
+
+.cta-band__title {
+	font-family: $font-heading;
+	font-size: clamp(28px, 4vw, 36px);
+	line-height: 1.2;
+	font-weight: 400;
+	margin: 0 0 12px;
+	color: $text-inverse;
+
+	em {
+		font-style: italic;
+		color: $accent;
+	}
+}
+
+.cta-band__sub {
+	font-size: 16px;
+	color: $text-tertiary;
+	line-height: 1.55;
+	margin: 0;
+	max-width: 560px;
+}
+
+.cta-band__actions {
+	display: flex;
+	gap: 12px;
+}
+
+.cta-band__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px 32px;
+	background: $accent;
+	color: $text-inverse;
+	border: none;
+	border-radius: $radius-md;
+	font-family: $font-body;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+	transition: background $transition;
+
+	&:hover {
+		background: $accent-hover;
+	}
+}

@@ -1,0 +1,499 @@
+@use "../../../app/styles/variables/variables" as *;
+@use "../../../app/styles/common/mixins" as *;
+
+// ===== HERO =====
+.hero {
+  background: $bg-section;
+
+  &__inner {
+    @include container;
+    padding-top: 60px;
+    padding-bottom: 52px;
+
+    @include md {
+      padding-top: 44px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-secondary;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+
+  &__breadcrumbLink {
+    color: $text-secondary;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__breadcrumbSep {
+    color: $border-color;
+    font-size: 10px;
+  }
+
+  &__breadcrumbCurrent {
+    color: $accent;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 18px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: $accent;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.15;
+    margin-bottom: 14px;
+
+    em {
+      font-style: italic;
+      color: $accent;
+    }
+
+    @include md {
+      font-size: 30px;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 17px;
+    color: $text-secondary;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__dateBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-secondary;
+    background: $bg-card;
+    border-radius: $radius-round;
+    padding: 7px 16px;
+    letter-spacing: 0.03em;
+  }
+
+  &__dateDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: $accent;
+    flex-shrink: 0;
+  }
+
+  &__operator {
+    font-size: 12px;
+    color: $text-secondary;
+    letter-spacing: 0.02em;
+  }
+
+  &__operatorLink {
+    color: $accent;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent-hover;
+    }
+  }
+}
+
+// ===== ACCORDION SECTION =====
+.privacySection {
+  padding: 72px 0 88px;
+
+  &__container {
+    @include container;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 56px;
+    align-items: start;
+
+    @include lg {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+}
+
+// ===== SIDEBAR =====
+.sidebar {
+  position: sticky;
+  top: 96px;
+
+  @include lg {
+    display: none;
+  }
+
+  &__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 20px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: $font-body;
+    color: $text-secondary;
+    line-height: 1.4;
+    transition: all $transition;
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      background: $bg-section;
+      color: $text-primary;
+    }
+
+    &--active {
+      background: $bg-card;
+      color: $accent;
+    }
+  }
+
+  &__num {
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 11px;
+    color: $accent;
+    opacity: 0.7;
+    flex-shrink: 0;
+    padding-top: 1px;
+    min-width: 18px;
+  }
+}
+
+// ===== ACCORDION =====
+.accordion {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    border-bottom: 1px solid $border-color;
+
+    &:first-child {
+      border-top: 1px solid $border-color;
+    }
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 22px 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: $font-body;
+    text-align: left;
+    transition: background $transition;
+    border-radius: 4px;
+
+    &:hover {
+      .accordion__title {
+        color: $accent;
+      }
+    }
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: $bg-card;
+    border-radius: $radius-sm;
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 12px;
+    color: $accent;
+    transition: background $transition, color $transition;
+    line-height: 1;
+
+    .accordion__item--open & {
+      background: $accent;
+      color: $white;
+    }
+  }
+
+  &__title {
+    flex: 1;
+    font-family: $font-heading;
+    font-size: 16px;
+    font-weight: 400;
+    color: $text-primary;
+    line-height: 1.3;
+    transition: color $transition;
+
+    .accordion__item--open & {
+      font-weight: 700;
+    }
+
+    @include md {
+      font-size: 15px;
+    }
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition;
+    color: $text-secondary;
+
+    svg {
+      transition: transform $transition;
+    }
+
+    .accordion__item--open & {
+      background: $accent;
+      border-color: $accent;
+      color: $white;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .accordion__item--open & {
+      max-height: 4000px;
+    }
+  }
+
+  &__content {
+    padding: 4px 0 28px 44px;
+
+    @include md {
+      padding-left: 12px;
+    }
+  }
+
+  &__text {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: $text-secondary;
+    white-space: pre-line;
+  }
+}
+
+// ===== CONTACT BLOCK =====
+.contact {
+  background: $bg-section;
+  padding: 64px 0;
+
+  &__container {
+    @include container;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+
+    @include md {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 22px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  &__emailLink {
+    color: $accent;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent-hover;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+
+    @include md {
+      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @include sm {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__btnPrimary {
+    @include button-primary;
+
+    @include sm {
+      text-align: center;
+    }
+  }
+
+  &__btnGhost {
+    @include button-outline;
+
+    @include sm {
+      text-align: center;
+    }
+  }
+}
+
+// ===== PD MODAL — only custom email field + success state =====
+// (modal frame, header, name/phone/textarea/consent/submit — used from shared/ui/Modal + shared/ui/Form)
+
+.pdEmailField {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+
+  &__label {
+    @include form-label;
+  }
+
+  &__optional {
+    @include form-optional-tag;
+  }
+
+  &__input {
+    @include form-input-base;
+
+    &--error {
+      @include form-input-error;
+    }
+  }
+
+  &__hint {
+    @include form-hint;
+    margin-top: 4px;
+  }
+}
+
+.pdSuccess {
+  @include modal-success;
+
+  &__icon {
+    @include modal-success-icon;
+    margin: 0 auto 20px;
+  }
+
+  &__title {
+    @include modal-success-title;
+  }
+
+  &__text {
+    @include modal-success-text;
+  }
+}

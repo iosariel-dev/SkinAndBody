@@ -1,0 +1,597 @@
+@use "../../../app/styles/variables/variables" as *;
+@use "../../../app/styles/common/mixins" as *;
+
+// ===== PAGE HERO =====
+
+.hero {
+  padding-top: 72px;
+  background: $bg-section;
+
+  &__inner {
+    width: $content-width;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px $content-padding 52px;
+
+    @include md {
+      padding: 44px $content-padding 40px;
+    }
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-secondary;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+
+  &__breadcrumbLink {
+    color: $text-secondary;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__breadcrumbSep {
+    color: $border-color;
+    font-size: 10px;
+  }
+
+  &__breadcrumbCurrent {
+    color: $accent;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 18px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: $accent;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.15;
+    margin-bottom: 14px;
+
+    em {
+      font-style: italic;
+      color: $accent;
+    }
+
+    @include md {
+      font-size: 30px;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 17px;
+    color: $text-secondary;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  &__badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    @include sm {
+      gap: 8px;
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-secondary;
+    background: $bg-card;
+    border-radius: $radius-round;
+    padding: 7px 16px;
+    letter-spacing: 0.03em;
+
+    @include sm {
+      font-size: 11px;
+      padding: 6px 13px;
+    }
+
+    &--accent {
+      background: $accent;
+      color: $white;
+
+      .hero__badgeDot {
+        background: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+
+  &__badgeDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: $accent;
+    flex-shrink: 0;
+  }
+}
+
+// ===== HERO DIVIDER =====
+
+.heroDivider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    $border-color 20%,
+    $border-color 80%,
+    transparent
+  );
+}
+
+// ===== DOCUMENTS SECTION =====
+
+.docsSection {
+  padding: 80px 0 64px;
+
+  @include md {
+    padding: 56px 0 48px;
+  }
+
+  &__container {
+    width: $content-width;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 $content-padding;
+  }
+
+  &__intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 52px;
+    flex-wrap: wrap;
+
+    @include md {
+      margin-bottom: 36px;
+    }
+  }
+
+  &__introText {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.2;
+  }
+
+  &__count {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-secondary;
+    padding: 8px 18px;
+    border: 1px solid $border-color;
+    border-radius: $radius-round;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+// ===== DOCUMENTS GRID =====
+
+.docsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  @include sm {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+// ===== DOCUMENT CARD =====
+
+.docCard {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: $bg-card;
+  cursor: pointer;
+  transition: transform $transition, box-shadow $transition;
+  box-shadow: 0 2px 12px rgba(44, 40, 38, 0.06);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.015);
+    box-shadow: 0 14px 44px rgba(44, 40, 38, 0.13);
+
+    .docCard__img {
+      transform: scale(1.03);
+    }
+
+    .docCard__overlay {
+      background: rgba(44, 40, 38, 0.22);
+    }
+
+    .docCard__zoom {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 3px;
+  }
+
+  &__imgWrap {
+    position: relative;
+    aspect-ratio: 5 / 7;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 40, 38, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background $transition;
+  }
+
+  &__zoom {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity $transition, transform $transition;
+    box-shadow: 0 4px 16px rgba(44, 40, 38, 0.18);
+    color: $accent;
+  }
+
+  &__footer {
+    padding: 12px 16px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-primary;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+
+  &__num {
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 11px;
+    color: $accent;
+    opacity: 0.7;
+    flex-shrink: 0;
+    padding-left: 8px;
+  }
+}
+
+// ===== INFO BLOCK =====
+
+.docsInfo {
+  padding: 40px 0 80px;
+
+  &__container {
+    width: $content-width;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 $content-padding;
+  }
+
+  &__inner {
+    border-top: 1px solid $border-color;
+    padding-top: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    @include md {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__textBlock {
+    max-width: 620px;
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    background: $bg-card;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+
+  &__para {
+    font-size: 14px;
+    line-height: 1.8;
+    color: $text-secondary;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $accent;
+    padding: 12px 26px;
+    border: 1.5px solid $accent;
+    border-radius: $radius-round;
+    transition: all $transition;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: center;
+    text-decoration: none;
+
+    svg {
+      transition: transform $transition;
+    }
+
+    &:hover {
+      background: $accent;
+      color: $white;
+
+      svg {
+        transform: translateX(-3px);
+      }
+    }
+
+    @include md {
+      align-self: flex-start;
+    }
+  }
+}
+
+// ===== LIGHTBOX =====
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 16, 14, 0.88);
+    backdrop-filter: blur(8px);
+    cursor: zoom-out;
+  }
+
+  &__close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all $transition;
+    z-index: 2;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: $white;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    max-width: 100vw;
+    max-height: 100vh;
+
+    @include md {
+      gap: 0;
+    }
+  }
+
+  &__imageWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.9);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    &--open {
+      transform: scale(1);
+    }
+  }
+
+  &__img {
+    max-width: min(600px, 90vw);
+    max-height: min(840px, 82vh);
+    width: auto !important;
+    height: auto !important;
+    border-radius: $radius-md;
+    box-shadow: 0 32px 96px rgba(0, 0, 0, 0.55);
+    display: block;
+    object-fit: contain;
+  }
+
+  &__arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all $transition;
+    flex-shrink: 0;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: $white;
+    }
+
+    &:disabled {
+      opacity: 0.2;
+      cursor: default;
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+  &__caption {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  &__counter {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all $transition;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+
+    &--active {
+      background: $accent;
+      width: 20px;
+      border-radius: 3px;
+    }
+  }
+}

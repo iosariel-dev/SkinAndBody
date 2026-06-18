@@ -1,0 +1,77 @@
+@use "../../app/styles/variables/variables" as *;
+@use "../../app/styles/common/mixins" as *;
+
+// Локальные стили только для уникальных элементов:
+// - Dropdown wrapper field (label-обёртка)
+// - Toggle "Написать / Позвонить"
+// - Success state
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.fieldLabel {
+  @include form-label;
+}
+
+.fieldOptional {
+  @include form-optional-tag;
+}
+
+// ----- Contact method toggle -----
+
+.toggle {
+  display: flex;
+  gap: 8px;
+
+  &__pill {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: $font-body;
+    font-weight: 500;
+    color: $text-secondary;
+    background: $bg-section;
+    border: 1.5px solid $border-color;
+    border-radius: $radius-round;
+    cursor: pointer;
+    transition: background $transition, border-color $transition, color $transition;
+
+    &:hover {
+      border-color: $accent;
+      color: $text-primary;
+    }
+
+    &--active {
+      background: $accent;
+      border-color: $accent;
+      color: $white;
+
+      &:hover {
+        background: $accent-hover;
+        border-color: $accent-hover;
+      }
+    }
+  }
+}
+
+// ----- Success state -----
+
+.success {
+  @include modal-success;
+
+  &__icon {
+    @include modal-success-icon;
+  }
+
+  &__title {
+    @include modal-success-title;
+  }
+
+  &__text {
+    @include modal-success-text;
+  }
+}

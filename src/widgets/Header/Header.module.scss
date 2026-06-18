@@ -1,0 +1,350 @@
+@use "../../app/styles/variables/variables" as *;
+@use "../../app/styles/common/mixins" as *;
+
+// ============================================
+// Header
+// ============================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 260;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow $transition;
+
+  &--scrolled {
+    box-shadow: $shadow-header;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 72px;
+    gap: 24px;
+  }
+
+  // ── Left nav ──────────────────────────────
+  &__navLeft {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
+  }
+
+  // ── Logo (center) ─────────────────────────
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  &__logoIcon {
+    color: $text-primary;
+    flex-shrink: 0;
+  }
+
+  &__logoText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__logoName {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $text-primary;
+    line-height: 1;
+  }
+
+  &__logoSub {
+    font-family: $font-body;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $accent;
+    line-height: 1;
+  }
+
+  // ── Right nav ─────────────────────────────
+  &__navRight {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  // ── Shared nav link ───────────────────────
+  &__link {
+    font-size: 13px;
+    font-weight: 400;
+    color: $text-secondary;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-decoration: none;
+    @include link-underline($accent);
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  // ── Phone ─────────────────────────────────
+  &__phone {
+    font-size: 13px;
+    font-weight: 600;
+    color: $text-primary;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  // ── Desktop CTA ───────────────────────────
+  &__cta {
+    padding: 9px 20px;
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: $white;
+    background: $accent;
+    border: none;
+    border-radius: $radius-round;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background $transition;
+
+    &:hover {
+      background: $accent-hover;
+    }
+  }
+
+  // ── Burger button ─────────────────────────
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    z-index: 300;
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: $text-primary;
+      border-radius: 2px;
+      transition: transform $transition, opacity $transition;
+      transform-origin: center;
+    }
+
+    &--open {
+      span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+
+  // ── Scroll-lock backdrop ──────────────────
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 40, 38, 0.35);
+    z-index: 240;
+  }
+}
+
+// ============================================
+// Mobile menu overlay
+// ============================================
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background: $white;
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  padding: 88px 32px 48px;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  // visibility скрываем ПОСЛЕ slide-out, иначе закрытие без анимации
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.4s;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &--open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+  }
+
+  // ── Nav links ─────────────────────────────
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    font-family: $font-heading;
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    color: $text-primary;
+    text-decoration: none;
+    border-bottom: 1px solid $border-color;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  // ── Phone ─────────────────────────────────
+  &__phone {
+    display: block;
+    margin-top: 28px;
+    font-family: $font-body;
+    font-size: 22px;
+    font-weight: 600;
+    color: $text-primary;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  // ── Social links ──────────────────────────
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  &__socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: $text-secondary;
+    border: 1.5px solid $border-color;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: color $transition, border-color $transition;
+
+    &:hover {
+      color: $accent;
+      border-color: $accent;
+    }
+  }
+
+  // ── CTA button ────────────────────────────
+  &__cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 32px;
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $white;
+    background: $accent;
+    border: none;
+    border-radius: $radius-round;
+    cursor: pointer;
+    text-align: center;
+    transition: background $transition;
+    align-self: flex-start;
+
+    &:hover {
+      background: $accent-hover;
+    }
+  }
+}
+
+// ============================================
+// Responsive — burger appears at lg (992px)
+// ============================================
+
+// Корзина в шапке: на десктопе — в navRight; на мобиле — отдельная справа.
+// Базовое (скрыта) — ДО media, чтобы display:flex в @include lg переопределял.
+.header__cartMobile {
+  display: none;
+  z-index: 300;
+}
+
+@include lg {
+  .header {
+    &__navLeft,
+    &__navRight {
+      display: none;
+    }
+
+    &__inner {
+      // Burger left | Logo center (flex trick) | empty right spacer
+      justify-content: space-between;
+    }
+
+    &__logo {
+      // Pull logo to true center when burger + spacer are equal width
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &__burger {
+      display: flex;
+    }
+
+    &__cartMobile {
+      display: flex;
+    }
+  }
+}

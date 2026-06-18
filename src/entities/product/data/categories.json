@@ -1,0 +1,334 @@
+[
+	{
+		"key": "cleansing",
+		"title": "Очищение"
+	},
+	{
+		"key": "toning",
+		"title": "Тонизирование"
+	},
+	{
+		"key": "hydration",
+		"title": "Увлажнение"
+	},
+	{
+		"key": "lipid",
+		"title": "Липидотерапия"
+	},
+	{
+		"key": "sensitive",
+		"title": "Чувствительная кожа"
+	},
+	{
+		"key": "couperose",
+		"title": "Купероз"
+	},
+	{
+		"key": "antioxidant",
+		"title": "Антиоксиданты"
+	},
+	{
+		"key": "eye",
+		"title": "Уход за кожей вокруг глаз"
+	},
+	{
+		"key": "lips",
+		"title": "Уход за губами"
+	},
+	{
+		"key": "pigment",
+		"title": "Пигментация и сияние"
+	},
+	{
+		"key": "antiage",
+		"title": "Возрастные изменения"
+	},
+	{
+		"key": "acne",
+		"title": "Проблемная кожа"
+	},
+	{
+		"key": "lymph",
+		"title": "Лимфодренаж"
+	},
+	{
+		"key": "peels",
+		"title": "Пилинги"
+	},
+	{
+		"key": "spf",
+		"title": "SPF-защита"
+	},
+	{
+		"key": "masks",
+		"title": "Маски"
+	},
+	{
+		"key": "sets",
+		"title": "Наборы"
+	},
+	{
+		"key": "hc-kids",
+		"title": "Для детей"
+	},
+	{
+		"key": "hc-body",
+		"title": "Для тела"
+	},
+	{
+		"key": "hc-sticks",
+		"title": "Стики"
+	},
+	{
+		"key": "hc-sensitive",
+		"title": "Для чувствительной кожи"
+	},
+	{
+		"key": "hc-dry",
+		"title": "Для сухой кожи"
+	},
+	{
+		"key": "hc-oily",
+		"title": "Для жирной кожи"
+	},
+	{
+		"key": "hc-tone",
+		"title": "С тоном"
+	},
+	{
+		"key": "hc-acne",
+		"title": "Для склонных к акне"
+	},
+	{
+		"key": "hc-antiage",
+		"title": "Омолаживающий"
+	},
+	{
+		"key": "hc-pigment",
+		"title": "От пигментации"
+	},
+	{
+		"key": "dt-acidcure",
+		"title": "ACIDCURE"
+	},
+	{
+		"key": "dt-aloe-v",
+		"title": "ALOE V"
+	},
+	{
+		"key": "dt-caviar",
+		"title": "CAVIAR DELIGHT"
+	},
+	{
+		"key": "dt-c-time",
+		"title": "C-TIME"
+	},
+	{
+		"key": "dt-cotton-clean",
+		"title": "COTTON CLEAN"
+	},
+	{
+		"key": "dt-elastense",
+		"title": "ELASTENSE"
+	},
+	{
+		"key": "dt-iretinol",
+		"title": "iRETINOL"
+	},
+	{
+		"key": "dt-pure-perfect",
+		"title": "PURE&PERFECT"
+	},
+	{
+		"key": "dt-sensi-well",
+		"title": "SENSI-WELL"
+	},
+	{
+		"key": "dt-lift-del-mar",
+		"title": "LIFT DEL MAR"
+	},
+	{
+		"key": "ec-cleansing",
+		"title": "Очищение"
+	},
+	{
+		"key": "ec-serum",
+		"title": "Сыворотки и концентраты"
+	},
+	{
+		"key": "ec-cream",
+		"title": "Кремы"
+	},
+	{
+		"key": "ec-eye",
+		"title": "Уход за кожей вокруг глаз"
+	},
+	{
+		"key": "ec-mask",
+		"title": "Маски"
+	},
+	{
+		"key": "nr-serum",
+		"title": "Сыворотки и концентраты"
+	},
+	{
+		"key": "nr-cream",
+		"title": "Кремы и эмульсии"
+	},
+	{
+		"key": "nr-eye",
+		"title": "Уход за кожей вокруг глаз"
+	},
+	{
+		"key": "nr-peel",
+		"title": "Пилинги"
+	},
+	{
+		"key": "nr-body",
+		"title": "Для тела"
+	},
+	{
+		"key": "sd-acglicolic",
+		"title": "Acglicolic"
+	},
+	{
+		"key": "sd-azelac",
+		"title": "Azelac"
+	},
+	{
+		"key": "sd-azelac-ru",
+		"title": "Azelac Ru"
+	},
+	{
+		"key": "sd-c-vit",
+		"title": "C-Vit"
+	},
+	{
+		"key": "sd-daeses",
+		"title": "Daeses"
+	},
+	{
+		"key": "sd-factor-g-renew",
+		"title": "Factor G Renew"
+	},
+	{
+		"key": "sd-ferulac",
+		"title": "Ferulac"
+	},
+	{
+		"key": "sd-fillderma",
+		"title": "Fillderma"
+	},
+	{
+		"key": "sd-hidraderm",
+		"title": "Hidraderm"
+	},
+	{
+		"key": "sd-hidraderm-hyal",
+		"title": "Hidraderm Hyal"
+	},
+	{
+		"key": "sd-hidraderm-trx",
+		"title": "Hidraderm TRX"
+	},
+	{
+		"key": "sd-hidraloe",
+		"title": "Hidraloe"
+	},
+	{
+		"key": "sd-hidraven",
+		"title": "Hidraven"
+	},
+	{
+		"key": "sd-k-vit",
+		"title": "K-Vit"
+	},
+	{
+		"key": "sd-mandelac",
+		"title": "Mandelac"
+	},
+	{
+		"key": "sd-mesoses",
+		"title": "Mesoses"
+	},
+	{
+		"key": "sd-oceanskin",
+		"title": "Oceanskin"
+	},
+	{
+		"key": "sd-repaskin",
+		"title": "Repaskin"
+	},
+	{
+		"key": "sd-resveraderm",
+		"title": "Resveraderm"
+	},
+	{
+		"key": "sd-reti-age",
+		"title": "Reti Age"
+	},
+	{
+		"key": "sd-retises",
+		"title": "Retises"
+	},
+	{
+		"key": "sd-retisil",
+		"title": "Retisil"
+	},
+	{
+		"key": "sd-salises",
+		"title": "Salises"
+	},
+	{
+		"key": "sd-samay",
+		"title": "Samay"
+	},
+	{
+		"key": "sd-sensyses",
+		"title": "Sensyses"
+	},
+	{
+		"key": "sd-serenity",
+		"title": "Serenity"
+	},
+	{
+		"key": "sd-sesgen-32",
+		"title": "Sesgen 32"
+	},
+	{
+		"key": "sd-sespanthenol",
+		"title": "Sespanthenol"
+	},
+	{
+		"key": "sd-sesretinal",
+		"title": "Sesretinal"
+	},
+	{
+		"key": "mg-cleansing",
+		"title": "Очищение"
+	},
+	{
+		"key": "mg-toning",
+		"title": "Тоники"
+	},
+	{
+		"key": "mg-serums",
+		"title": "Сыворотки"
+	},
+	{
+		"key": "mg-creams",
+		"title": "Кремы"
+	},
+	{
+		"key": "mg-spf",
+		"title": "SPF-защита"
+	},
+	{
+		"key": "mg-masks",
+		"title": "Маски"
+	},
+	{
+		"key": "mg-gels",
+		"title": "Гели"
+	}
+]

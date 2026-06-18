@@ -1,0 +1,64 @@
+@use "../../../app/styles/variables/variables" as *;
+@use "../../../app/styles/common/mixins" as *;
+
+@include modal-animations("m");
+
+.overlay {
+  @include modal-overlay;
+  animation: m-fadeIn 0.3s ease both;
+
+  &--closing {
+    animation: m-fadeOut 0.3s ease both;
+
+    .box {
+      animation: m-slideOut 0.3s ease both;
+    }
+
+    @include sm {
+      .box {
+        animation: m-sheetDown 0.3s ease both;
+      }
+    }
+  }
+}
+
+.box {
+  @include modal-content-box;
+  animation: m-slideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  @include sm {
+    animation: m-sheetUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+.header {
+  @include modal-header;
+}
+
+.titleRow {
+  @include modal-title-row;
+}
+
+.body {
+  @include modal-body;
+}
+
+.close {
+  @include modal-close-button;
+
+  &--corner {
+    @include modal-close-corner;
+  }
+}
+
+.eyebrow {
+  @include modal-eyebrow;
+}
+
+.title {
+  @include modal-title;
+}
+
+.sub {
+  @include modal-sub;
+}

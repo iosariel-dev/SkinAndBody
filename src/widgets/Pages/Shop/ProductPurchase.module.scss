@@ -1,0 +1,76 @@
+@use "@/app/styles/variables/variables" as *;
+
+.purchase {
+	margin: 22px 0 0;
+}
+
+.price {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 12px;
+	font-size: 30px;
+	font-weight: 700;
+	color: $text-primary;
+	margin-bottom: 18px;
+}
+
+.oldPrice {
+	font-size: 20px;
+	font-weight: 500;
+	color: $text-tertiary;
+	text-decoration: line-through;
+}
+
+.discount {
+	font-size: 14px;
+	font-weight: 600;
+	color: $white;
+	background: $error;
+	border-radius: $radius-round;
+	padding: 4px 12px;
+	align-self: center;
+}
+
+.variants {
+	margin-bottom: 18px;
+}
+
+.variants__label {
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: $text-secondary;
+	margin-bottom: 8px;
+}
+
+.variants__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.variant {
+	padding: 9px 16px;
+	font-family: $font-body;
+	font-size: 14px;
+	font-weight: 500;
+	color: $text-primary;
+	background: $bg-section;
+	border: 1.5px solid transparent;
+	border-radius: $radius-round;
+	cursor: pointer;
+	transition: border-color $transition, background $transition;
+
+	&:hover {
+		border-color: $border-color;
+	}
+}
+
+.variant--active {
+	border-color: $accent;
+	background: $white;
+	color: $accent;
+}

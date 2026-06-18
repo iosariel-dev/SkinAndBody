@@ -1,0 +1,80 @@
+@use "@/app/styles/variables/variables" as *;
+
+.btn {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border-radius: $radius-round;
+	background: $bg-card;
+	color: $text-primary;
+	border: none;
+	cursor: pointer;
+	transition: background $transition, color $transition;
+	flex-shrink: 0;
+
+	&:hover {
+		background: $accent-light;
+		color: $accent;
+	}
+}
+
+.count {
+	position: absolute;
+	top: -4px;
+	right: -4px;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: $font-body;
+	font-size: 10px;
+	font-weight: 700;
+	color: $white;
+	background: $accent;
+	border-radius: $radius-round;
+	line-height: 1;
+}
+
+// ===== Анимация при добавлении товара =====
+.bump {
+	animation: cart-bump 0.6s ease;
+}
+
+@keyframes cart-bump {
+	0%,
+	100% {
+		transform: scale(1);
+		background: $bg-card;
+	}
+	25% {
+		transform: scale(1.22);
+		background: $accent-light;
+	}
+	50% {
+		transform: scale(0.9);
+	}
+	72% {
+		transform: scale(1.1);
+	}
+}
+
+.count--bump {
+	animation: count-pop 0.6s ease;
+}
+
+@keyframes count-pop {
+	0% {
+		transform: scale(0.3);
+	}
+	55% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

@@ -1,0 +1,196 @@
+@use "../../app/styles/variables/variables" as *;
+@use "../../app/styles/common/mixins" as *;
+
+.footer {
+	// Не сжиматься в flex-колонке body (sticky-footer): иначе на длинных
+	// страницах футер сдавливается ниже своего контента и тёмный фон обрезается.
+	flex-shrink: 0;
+	background: $bg-footer;
+	color: $text-inverse;
+	padding: 48px 0 24px;
+
+	&__container {
+		@include container;
+	}
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 32px;
+
+		@include md {
+			flex-direction: column;
+			gap: 32px;
+		}
+	}
+
+	// ── Brand
+	&__logo {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 22px;
+		font-weight: 700;
+		color: $text-inverse;
+		letter-spacing: 0.04em;
+		margin-bottom: 8px;
+	}
+
+	&__logoIcon {
+		color: $text-inverse;
+		flex-shrink: 0;
+	}
+
+	&__owner {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		font-size: 12px;
+		color: $text-tertiary;
+		margin-bottom: 16px;
+	}
+
+	&__inn {
+		font-size: 12px;
+		color: $text-tertiary;
+		opacity: 0.8;
+	}
+
+	&__socials {
+		display: flex;
+		gap: 10px;
+	}
+
+	&__social {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.08);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $text-tertiary;
+		text-decoration: none;
+		transition: all $transition;
+
+		&:hover {
+			background: $accent;
+			color: $white;
+		}
+	}
+
+	// ── Знак «Честный знак» (участник системы маркировки)
+	&__mark {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-top: 22px;
+		max-width: 260px;
+		text-decoration: none;
+	}
+
+	&__markImg {
+		width: 104px;
+		height: auto;
+		border-radius: 6px;
+	}
+
+	&__markNote {
+		font-size: 11px;
+		line-height: 1.4;
+		color: $text-tertiary;
+		opacity: 0.8;
+	}
+
+	// ── Navigation
+	&__nav {
+		display: flex;
+		gap: 48px;
+
+		@include md {
+			flex-wrap: wrap;
+			gap: 24px;
+		}
+	}
+
+	&__navGroup {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__navTitle {
+		font-size: 13px;
+		font-weight: 600;
+		color: $accent;
+		margin-bottom: 14px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+
+	&__navLink {
+		display: block;
+		font-size: 14px;
+		color: rgba(255, 255, 255, 0.6);
+		margin-bottom: 10px;
+		text-decoration: none;
+		transition: color $transition;
+		background: none;
+		border: none;
+		padding: 0;
+		font-family: inherit;
+		cursor: pointer;
+		text-align: left;
+
+		&:hover {
+			color: $text-inverse;
+		}
+	}
+
+	// ── Bottom
+	&__bottom {
+		margin-top: 32px;
+		padding: 32px 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 16px;
+
+		@include sm {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 20px;
+		}
+	}
+
+	&__copy {
+		font-size: 12px;
+		color: $text-tertiary;
+	}
+
+	&__legal {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 12px;
+		font-size: 12px;
+		color: $text-tertiary;
+
+		a {
+			color: $accent;
+			text-decoration: none;
+			transition: color $transition;
+
+			&:hover {
+				color: $accent-hover;
+			}
+		}
+	}
+
+	&__legalSep {
+		color: $text-tertiary;
+		opacity: 0.5;
+	}
+}

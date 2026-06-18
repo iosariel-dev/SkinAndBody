@@ -1,0 +1,105 @@
+@use "@/app/styles/variables/variables" as *;
+
+.page {
+	background: $bg-primary;
+}
+
+.container {
+	width: 100%;
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 0 $content-padding 64px;
+}
+
+.crumbs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	padding: 104px 0 0;
+	font-size: 13px;
+	color: $text-tertiary;
+
+	@media (max-width: $breakpoint-md) {
+		padding: 92px 0 0;
+	}
+}
+
+.crumbs__link:hover { color: $accent; }
+.crumbs__current { color: $text-secondary; }
+
+.title {
+	font-family: $font-heading;
+	font-size: 34px;
+	font-weight: 700;
+	color: $text-primary;
+	line-height: 1.2;
+	margin: 18px 0 14px;
+
+	@media (max-width: $breakpoint-md) {
+		font-size: 26px;
+	}
+}
+
+.intro {
+	font-size: 16px;
+	color: $text-secondary;
+	line-height: 1.65;
+	margin-bottom: 36px;
+}
+
+.section {
+	margin-bottom: 28px;
+}
+
+.section__title {
+	font-family: $font-heading;
+	font-size: 20px;
+	font-weight: 700;
+	color: $text-primary;
+	margin-bottom: 12px;
+
+	@media (max-width: $breakpoint-md) {
+		font-size: 18px;
+	}
+}
+
+.section__text {
+	font-size: 15px;
+	color: $text-secondary;
+	line-height: 1.7;
+	margin-bottom: 10px;
+}
+
+.requisites {
+	margin-top: 40px;
+	padding: 28px;
+	background: $bg-section;
+	border-radius: $radius-lg;
+}
+
+.requisites__list {
+	list-style: none;
+	margin: 0 0 16px;
+	padding: 0;
+
+	li {
+		font-size: 15px;
+		color: $text-primary;
+		line-height: 1.7;
+		padding-left: 0;
+	}
+}
+
+.legalLinks {
+	font-size: 14px;
+	color: $text-tertiary;
+}
+
+.legalLinks__link {
+	color: $accent;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+
+	&:hover { color: $accent-hover; }
+}

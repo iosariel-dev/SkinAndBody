@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Филиал в центре",
+		"address": "г. Ульяновск, ул. Примерная, 1",
+		"mapUrl": "https://yandex.ru/maps/",
+		"mapWidget": "https://yandex.ru/map-widget/v1/?ll=48.389%2C54.314&z=13",
+		"reviewWidget": ""
+	},
+	{
+		"name": "Второй филиал",
+		"address": "г. Ульяновск, ул. Образцовая, 2",
+		"mapUrl": "https://yandex.ru/maps/",
+		"mapWidget": "https://yandex.ru/map-widget/v1/?ll=48.351%2C54.304&z=13",
+		"reviewWidget": ""
+	}
+]

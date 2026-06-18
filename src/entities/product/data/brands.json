@@ -1,0 +1,67 @@
+[
+	{
+		"slug": "skin-synergy",
+		"name": "Skin Synergy",
+		"title": "Skin Synergy",
+		"tagline": "Корнеотерапия и кислотный уход",
+		"description": "Профессиональная косметика для домашнего ухода: мягкое очищение, кислоты, NMF-увлажнение и восстановление барьера кожи.",
+		"logo": "/images/brands/skin-synergy.webp"
+	},
+	{
+		"slug": "angiopharm",
+		"name": "Angiopharm",
+		"title": "Angiopharm",
+		"tagline": "Купероз, чувствительность и anti-age",
+		"description": "Российская профессиональная косметика с ангиопротекторным действием. Уход при куперозе, для чувствительной и возрастной кожи, коррекция пигментации и липидотерапия.",
+		"logo": "/images/brands/angiopharm.webp"
+	},
+	{
+		"slug": "heliocare",
+		"name": "Heliocare",
+		"title": "Heliocare",
+		"tagline": "Солнцезащита и профилактика фотостарения",
+		"description": "Солнцезащитная линия испанского бренда Cantabria Labs с технологией Fernblock® на основе экстракта папоротника. Ежедневная фотозащита широкого спектра, антиоксидантная поддержка и профилактика фотоповреждений — флюиды, гели, спреи и тональные текстуры.",
+		"logo": "/images/brands/heliocare.webp",
+		"heroBadge": "☀ Только солнцезащита · SPF 50–100"
+	},
+	{
+		"slug": "dermatime",
+		"name": "Dermatime",
+		"title": "Dermatime",
+		"tagline": "Профессиональный уход по линиям-протоколам",
+		"description": "Профессиональная косметика Dermatime по целевым линиям-протоколам: кислотный уход (ACIDCURE), витамин C (C-TIME), ретинол (iRETINOL), лифтинг (ELASTENSE, LIFT DEL MAR), для проблемной (PURE&PERFECT) и чувствительной кожи (SENSI-WELL), очищение (COTTON CLEAN) и увлажнение (ALOE V).",
+		"logo": "/images/brands/dermatime.webp"
+	},
+	{
+		"slug": "endocare",
+		"name": "Endocare",
+		"title": "Endocare",
+		"tagline": "Восстановление и anti-age",
+		"description": "Линия испанского дерматокосметического бренда Cantabria Labs для восстановления кожи, профилактики и коррекции возрастных изменений. Регенерирующие комплексы на основе факторов роста (SCA), антиоксиданты, пептиды и ретинол — сыворотки, кремы, эмульсии и уход для области вокруг глаз.",
+		"logo": "/images/brands/endocare.webp"
+	},
+	{
+		"slug": "neoretin",
+		"name": "Neoretin",
+		"title": "Neoretin",
+		"tagline": "Депигментация и ровный тон",
+		"description": "Линия Neoretin Discrom Control от Cantabria Labs — «умная» депигментирующая программа для коррекции и профилактики пигментации, постакне, мелазмы и неровного тона. Технология RetinSphere® и осветляющий комплекс Whitening Booster — сыворотки, кремы, эмульсии, пилинг и уход для зоны вокруг глаз.",
+		"logo": "/images/brands/neoretin.webp"
+	},
+	{
+		"slug": "sesderma",
+		"name": "Sesderma",
+		"title": "Sesderma",
+		"tagline": "Липосомальная дермакосметика из Испании",
+		"description": "Испанская дермокосметика Sesderma с запатентованной липосомальной нанотехнологией доставки активов. Уход по показаниям: витамин C, ретинол, азелаиновая и салициловая кислоты, увлажнение, anti-age, пигментация, проблемная и чувствительная кожа.",
+		"logo": "/images/brands/sesderma.webp"
+	},
+	{
+		"slug": "magiray",
+		"name": "Magiray",
+		"title": "Magiray",
+		"tagline": "Профессиональная косметика из Израиля",
+		"description": "Профессиональная израильская космецевтика Magiray на основе растительных активов и минералов. Очищение, увлажнение, anti-age, восстановление и защита кожи — средства для домашнего и салонного ухода.",
+		"logo": "/images/brands/magiray.webp"
+	}
+]
